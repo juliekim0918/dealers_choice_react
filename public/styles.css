@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins", -apple-system, system-ui, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Ubuntu;
+}
+body {
+  margin: 0;
+}
+
+a img {
+  width: 80px;
+  height: auto;
+}
+#nav-bar {
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+
+  top: 0;
+  width: 100%;
+  transform: translateZ(0);
+  transition: all 0.2s ease;
+  background-color: #fff;
+  height: 64px;
+  box-shadow: 0 0 0 1px rgb(67 41 163 / 10%), 0 1px 8px 0 rgb(67 41 163 / 10%);
+  padding: 10px;
+}
+
+#nav-bar .nav-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#nav-bar .nav-menu a {
+  margin: 0 20px;
+  color: inherit;
+  font-weight: 800;
+  text-decoration: inherit;
+}
+
+#info-container {
+  margin: 100px auto;
+  width: 90%;
+}
+
+.animal-cards-container {
+  border: 1px solid rgba(67, 41, 163, 0.2);
+}
+
+.animal-card {
+  display: flex;
+  border-bottom: 1px solid rgba(67, 41, 163, 0.2);
+  padding: 20px;
+}
+
+.animal-card img {
+  width: 150px;
+}
+
+.animal-card .info {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+h3 {
+  font-weight: normal;
+}
+
+.animal-card .info p {
+  margin-top: 20px;
+}
+
+.animal-card .badge {
+  border-radius: 20px;
+  background: #f6f6f8;
+  padding: 10px;
+}
+
+.animal-card .trainer-info {
+  flex: 2;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.animal-card .trainer-info span {
+  font-size: 10px;
+}
+.animal-card h2 {
+  margin: 0;
+}
+
+.animal-card .trainer-info h2,
+#trainer-container .info h4,
+.nav-menu a {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 425px) {
+  .animal-card {
+    flex-direction: column;
+  }
+  .animal-card img {
+    width: 100%;
+  }
+  .animal-card .info {
+    padding: 10px 0;
+  }
+
+  .animal-card .trainer-info {
+    align-items: flex-start;
+  }
+}
