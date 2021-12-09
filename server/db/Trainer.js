@@ -14,4 +14,5 @@ const Trainer = db.define("trainer", {
   },
 });
 
+
 module.exports = Trainer;

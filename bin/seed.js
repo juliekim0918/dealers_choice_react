@@ -118,3 +118,7 @@ seed().catch((err) => {
     ${err.stack}
     `);
 });
+
+module.exports = {
+  randomNum,
+};
