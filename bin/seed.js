@@ -106,6 +106,8 @@ const seed = async () => {
     a29.update({ trainerId: randomNum() }),
     a30.update({ trainerId: randomNum() }),
   ]);
+
+  return Promise.all([Trainer.findAll(), Animal.findAll()]);
 };
 
 seed().catch((err) => {
@@ -121,4 +123,5 @@ seed().catch((err) => {
 
 module.exports = {
   randomNum,
+  seed,
 };

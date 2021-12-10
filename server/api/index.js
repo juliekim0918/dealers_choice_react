@@ -1,6 +1,7 @@
 const { db, Animal, Trainer } = require("../db");
 const express = require("express");
 const app = express.Router();
+const faker = require("faker");
 
 const randomNum = () => {
   return Math.floor(Math.random() * (15 - 1) + 1);
@@ -20,11 +21,21 @@ app.get("/animals", async (req, res, next) => {
 });
 
 app.post("/animals", async (req, res, next) => {
-  const newAnimal = await Animal.create({
-    ...req.body,
-    trainerId: randomNum(),
-  });
-  res.send(newAnimal);
+  let newAnimal = {
+    animal_type: faker.animal.type(),
+    name: faker.name.lastName(),
+    imageUrl: faker.image.animals(),
+  };
+  newAnimal["species"] = faker.animal[newAnimal.animal_type]();
+  newAnimal["trainerId"] = randomNum();
+  const animal = await Animal.create(newAnimal);
+  res.send(animal);
+});
+
+app.delete("/animals/:id", async (req, res, next) => {
+  const animal = await Animal.findByPk(req.params.id);
+  animal.destroy();
+  res.sendStatus(204);
 });
 
 app.get("/trainers", async (req, res, next) => {

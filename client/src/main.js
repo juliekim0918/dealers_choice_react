@@ -36,17 +36,18 @@ class Main extends React.Component {
   }
 
   addAnimal = async () => {
-    let newAnimal = {
-      animal_type: faker.animal.type(),
-      name: faker.name.lastName(),
-      imageUrl: faker.image.animals(),
-    };
-    newAnimal["species"] = faker.animal[newAnimal.animal_type]();
-    await axios.post("/api/animals", newAnimal);
+    const response = (await axios.post("/api/animals")).data;
     // const response = (await axios.post("/api/animals", newAnimal)).data;
     const animals = (await axios.get("/api/animals")).data;
     this.setState({
       animals,
+    });
+  };
+
+  deleteAnimal = async (id) => {
+    const animal = await axios.delete(`/api/animals/${id}`);
+    this.setState({
+      animals: this.state.animals.filter((animal) => animal.id !== id),
     });
   };
 
@@ -58,7 +59,7 @@ class Main extends React.Component {
 
   render() {
     const { animals, selectedTrainer } = this.state;
-    const { selectTrainer, reset } = this;
+    const { selectTrainer, reset, deleteAnimal, addAnimal } = this;
     return (
       <div id="main">
         <Navbar reset={reset} />
@@ -67,7 +68,8 @@ class Main extends React.Component {
           selectedTrainer={selectedTrainer}
           selectTrainer={selectTrainer}
           reset={reset}
-          addAnimal={this.addAnimal}
+          addAnimal={addAnimal}
+          deleteAnimal={deleteAnimal}
         />
       </div>
     );

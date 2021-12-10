@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/*spec.js",
+    "test:dev": "npm test -- --watch",
     "build": "webpack",
     "build:dev": "npm run build -- --mode=development --watch",
     "start": "nodemon server/main.js --ignore dist/ --ignore client/src/ & npm run build:dev",
@@ -32,6 +33,7 @@
     "nodemon": "^2.0.15",
     "pg": "^8.7.1",
     "sequelize": "^6.12.0-beta.1",
+    "supertest": "^6.1.6",
     "volleyball": "^1.5.1"
   }
 }

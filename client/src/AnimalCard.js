@@ -1,6 +1,11 @@
 import React from "react";
 
-const AnimalCard = ({ animal, selectedTrainer, selectTrainer }) => {
+const AnimalCard = ({
+  animal,
+  selectedTrainer,
+  selectTrainer,
+  deleteAnimal,
+}) => {
   return (
     <div className="animal-card">
       <img src={animal.imageUrl} alt="" />
@@ -14,8 +19,11 @@ const AnimalCard = ({ animal, selectedTrainer, selectTrainer }) => {
             {animal.species}
           </span>
         </p>
+        <button onClick={() => deleteAnimal(animal.id)}>
+          Delete this animal
+        </button>
       </div>
-      {selectedTrainer.id ? (
+      {selectedTrainer.id || !animal.trainer.id ? (
         ""
       ) : (
         <div className="trainer-info">

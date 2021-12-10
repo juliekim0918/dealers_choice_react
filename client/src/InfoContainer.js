@@ -8,6 +8,7 @@ const InfoContainer = ({
   selectTrainer,
   reset,
   addAnimal,
+  deleteAnimal,
 }) => {
   return (
     <div id="info-container">
@@ -24,6 +25,7 @@ const InfoContainer = ({
               key={animal.id}
               selectTrainer={selectTrainer}
               selectedTrainer={selectedTrainer}
+              deleteAnimal={deleteAnimal}
             />
           ))}
         </div>
